@@ -14,20 +14,19 @@ const App=()=>{
                     title="Layout1"
                     descr="This is decription of the layout1"
                     urlBg
-                   colorBg={false}
+
 
            />
            <Layout id="2"
                    title="Layout2"
                    descr="This is decription of the layout2"
                    colorBg
-                   urlBg={false}
+
            />
            <Layout id="3"
                    title="Layout3"
                    descr="This is decription of the layout3"
                    urlBg
-                   colorBg={false}
                     />
            <Footer />
         </>

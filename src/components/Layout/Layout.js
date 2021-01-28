@@ -1,9 +1,12 @@
 import React from 'react';
 import s from './style.module.css';
+import imgUrl from '../../assets/bg3.jpg';
 
-const Layout = ({id, title, descr, urlBg=true, colorBg}) => {
+const Layout = ({id, title, descr, urlBg, colorBg}) => {
+    const styles=urlBg?{ backgroundImage:`url(${imgUrl})`}:{backgroundColor:'grey'};
+
     return (
-        <section className={s.root} id={id}>
+        <section className={s.root} style={styles} id={id}>
             <div className={s.wrapper}>
                 <article>
                     <div className={s.title}>
