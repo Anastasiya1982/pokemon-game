@@ -4,7 +4,6 @@
     min-height: 100vh;
     font-size: 1.4rem;
     position: relative;
-
     clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 80% 95%, 0 100%);
     z-index: 5;
     background-attachment: fixed;
