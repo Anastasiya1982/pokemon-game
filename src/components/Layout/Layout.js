@@ -2,7 +2,7 @@ import React from 'react';
 import s from './style.module.css';
 
 
-const Layout = ({id, title, descr, urlBg, colorBg}) => {
+const Layout = ({id, title, urlBg, colorBg,children}) => {
     const styles={};
     if(urlBg){
         styles.backgroundImage=`url(${urlBg})`
@@ -20,7 +20,7 @@ const Layout = ({id, title, descr, urlBg, colorBg}) => {
                         <span className={s.separator}></span>
                     </div>
                     <div className={s.desc + ' ' + s.full}>
-                        <p>{descr}</p>
+                       {children}
                     </div>
                 </article>
             </div>
