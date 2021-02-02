@@ -59,6 +59,7 @@
 .container {
     width: fit-content;
     position: absolute;
+    text-align: center;
     right: 0;
     top: 50%;
     left: 50%;
@@ -91,3 +92,31 @@
     color: #fafafa;
     line-height: 32px;
 }
+button{
+    background-color: #ff8495;
+    padding: 15px 25px;
+    margin: 20px auto;
+    font-family: 'Overlock', Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    color: #fafafa;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 9999999s;
+    box-shadow: 1px 1px 10px
+}
+ button:focus {
+    outline: none;
+}
+button::-moz-focus-inner {
+    border: 0;
+}
+
+button:active {
+    background: #ff626c;
+    transition: background 0s;
+    box-shadow: inset 1px 1px 10px -1px
+}
+
+
