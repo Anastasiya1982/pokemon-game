@@ -23,10 +23,10 @@ const PokemonCard = ({ id, name, img, type, values }) => {
                     <div className={cn(s.wrap,s.front)}>
                         <div className={cn(s.pokemon,s[type])}>
                             <div className={s.values}>
-                                <div className={`${s.count} ${s.top}`}>{values.top}</div>
-                                <div className={`${s.count} ${s.right}`}>{values.right}</div>
-                                <div className={`${s.count} ${s.bottom}`}>{values.bottom}</div>
-                                <div className={`${s.count} ${s.left}`}>{values.left}</div>
+                                <div className={cn(s.count,s.top)}>{values.top}</div>
+                                <div className={cn(s.count,s.right)}>{values.right}</div>
+                                <div className={cn(s.count,s.bottom)}>{values.bottom}</div>
+                                <div className={cn(s.count,s.left)}>{values.left}</div>
                             </div>
                             <div className={s.imgContainer}>
                                 <img src={img} alt={name}/>

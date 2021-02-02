@@ -5,6 +5,7 @@ import PokemonCard from "../../components/PokemonCard";
 import Footer from "../../components/Footer/footer";
 import imgBg from "../../assets/bg3.jpg";
 import  s from './style.module.css';
+import MenuHeader from "../../components/MenuHeader/MenuHeader";
 
 
 const POKEMONS=[
@@ -152,6 +153,7 @@ const HomePage=({ onChangePage })=>{
 
     return (
         <>
+            <MenuHeader />
             <Header title="Pockemon Game"
                     descr="This is the Game about Pokemons"
                     onClickBtn={handlerClickBtn}
