@@ -66,7 +66,7 @@
     background: url("https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true") bottom repeat-x;
 }
 
-.menuContainer.deactive {
+.menuContainer .deactive {
     animation: fade-out 600ms forwards;
 }
 

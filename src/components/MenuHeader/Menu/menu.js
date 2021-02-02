@@ -2,12 +2,13 @@ import React from 'react';
 import cn from 'classnames';
 import s from './style.module.css';
 
-const Menu=()=>{
+const Menu=({ onClick,status})=>{
+
     return (
 
-        <div class={cn(s.menuContainer, s.active, s.deactiv)}>
-            <div class={s.overlay}/>
-            <div class={s.menuItems}>
+        <div className={cn(s.menuContainer,{[s.active]:status},{[s.deactive]:!status})} onClick={onClick}>
+            <div className={s.overlay}/>
+            <div className={s.menuItems}>
                 <ul>
                     <li>
                         <a href="#welcome">

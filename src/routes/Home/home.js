@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Header from "../../components/Header/header";
 import Layout from "../../components/Layout/Layout";
 import PokemonCard from "../../components/PokemonCard";
@@ -146,10 +146,12 @@ const POKEMONS=[
 
 const HomePage=({ onChangePage })=>{
 
+
     const handlerClickBtn=(page)=>{
         console.log('HomePage');
         onChangePage&& onChangePage(page);
     }
+
 
     return (
         <>
