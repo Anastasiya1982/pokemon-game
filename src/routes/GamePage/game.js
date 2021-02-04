@@ -146,16 +146,30 @@ const GamePage=()=>{
 
    const  onHandleClick=(id)=>{
        console.log(id);
-       setPokemons(pokemons=>{
-           const pokemonsCopy=pokemons.map(item=>item);
-           console.log(pokemonsCopy);
-           return pokemonsCopy.map(item=>{
-               if(item.id===id){item.isActive= !item.isActive}
-               return item;
-           });
 
-   });
+       setPokemons(prevState=> {
+           const pokemonsCopy = POKEMONS.map(item => item);
+           console.log(pokemonsCopy);
+           return pokemonsCopy.map(item => {
+                   if (item.id === id) {
+                       item.isActive = !item.isActive;
+                   }
+                   return item;
+               }
+           )
+       });
+
+       //     Array.from((prevState),(item)=>{
+       //         if (item.id === id) {
+       //              item.isActive = !item.isActive;
+       //         }
+       //         return{...item}
+       //     }
+       // )
    }
+
+
+
 
 
     return(
