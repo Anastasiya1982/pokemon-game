@@ -3,8 +3,7 @@ import Header from "../../components/Header/header";
 import Layout from "../../components/Layout/Layout";
 import Footer from "../../components/Footer/footer";
 import imgBg from "../../assets/bg3.jpg";
-import  s from './style.module.css';
-import MenuHeader from "../../components/MenuHeader/MenuHeader";
+
 
 
 

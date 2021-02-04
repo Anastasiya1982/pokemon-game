@@ -3,12 +3,15 @@ import React, {useState} from 'react';
 
 import HomePage from "./routes/HomePage/home";
 import GamePage from "./routes/GamePage/game";
+import AboutPage from "./routes/AboutPage/about";
 import {useRouteMatch, Switch, Route, Redirect} from "react-router-dom";
 
 import MenuHeader from "./components/MenuHeader/MenuHeader";
 import Footer from "./components/Footer/footer";
 import s from './style.module.css';
-import cn from 'classnames';
+import ContactPage from "./routes/ContactPage/contact";
+
+
 
 
 
@@ -31,9 +34,8 @@ const App = () => {
                             <Route path="/" exact component={HomePage}/>
                             <Route path="/home" component={HomePage}/>
                             <Route path="/game" component={GamePage}/>
-                            <Route path="/about" render={() => (
-                                <h1>This is page about</h1>
-                            )}/>
+                            <Route path="/about" component={AboutPage} />
+                            <Route path="/contact" component={ContactPage} />
                             <Route  render={()=>(
                                 <Redirect to ="/404"/>
                                 )}/>

@@ -23,7 +23,12 @@ const MENU=[
 ]
 
 
-const Menu=({status})=>{
+const Menu=({status,onClick})=>{
+
+    const onClickClose=()=>{
+        onClick&&onClick()
+    }
+
 
     return (
         <div className={cn(s.menuContainer,
@@ -37,7 +42,7 @@ const Menu=({status})=>{
                         MENU.map((item,index)=>{
                             return(
                                 <li key={item.index}>
-                                    <Link to={item.to}>
+                                    <Link to={item.to} onClick={onClickClose}>
                                         {item.title}
                                     </Link>
                                 </li>)})
