@@ -1,0 +1,6 @@
+.wrap {
+    min-height: calc(100vh - 100px);
+}
+.wrap.isHomePage{
+    padding: 0;
+}

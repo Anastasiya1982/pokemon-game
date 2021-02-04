@@ -1,35 +1,47 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import cn from 'classnames';
 import s from './style.module.css';
 
-const Menu=({ onClick,status})=>{
+
+const MENU=[
+    {title:'HOME',
+     to:"/home"
+    },
+    {title:'GAME',
+        to:"/game"
+    },
+    {title:'ABOUT',
+        to:"/about"
+    },
+    {title:'CONTACT',
+        to:"/contact"
+    },
+    {title:'Not Found ',
+        to:"/contact"
+    }
+]
+
+
+const Menu=({status})=>{
 
     return (
-
-        <div className={cn(s.menuContainer,{[s.active]:status},{[s.deactive]:!status})} onClick={onClick}>
+        <div className={cn(s.menuContainer,
+            {   [s.active]: status === true,
+                [s.deactive]: status === false
+            })} >
             <div className={s.overlay}/>
             <div className={s.menuItems}>
                 <ul>
-                    <li>
-                        <a href="#welcome">
-                            HOME
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#game">
-                            GAME
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#about">
-                            ABOUT
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#contact">
-                            CONTACT
-                        </a>
-                    </li>
+                    {
+                        MENU.map((item,index)=>{
+                            return(
+                                <li key={item.index}>
+                                    <Link to={item.to}>
+                                        {item.title}
+                                    </Link>
+                                </li>)})
+                    }
                 </ul>
             </div>
         </div>
