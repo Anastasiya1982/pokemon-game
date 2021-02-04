@@ -147,17 +147,18 @@ const GamePage=()=>{
    const  onHandleClick=(id)=>{
        console.log(id);
 
-       setPokemons(prevState=> {
-           const pokemonsCopy = POKEMONS.map(item => item);
+       setPokemons(pokemons => {
+          let pokemonsCopy= Array.from(POKEMONS,item=>{
+               if (item.id === id) {
+                item.isActive = !item.isActive;
+                 }
+               return item;
+           });
            console.log(pokemonsCopy);
-           return pokemonsCopy.map(item => {
-                   if (item.id === id) {
-                       item.isActive = !item.isActive;
-                   }
-                   return item;
-               }
-           )
+           console.log(POKEMONS)
+           return pokemonsCopy
        });
+
 
        //     Array.from((prevState),(item)=>{
        //         if (item.id === id) {
