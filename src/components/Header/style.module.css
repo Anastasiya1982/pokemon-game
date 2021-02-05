@@ -37,7 +37,11 @@
     position: absolute;
     bottom: -300px;
     left: 0;
+<<<<<<< HEAD
     background: url("https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true") bottom left repeat-x;
+=======
+    background: url("https://raw.githubusercontent.com/yagoestevez/fcc-portfolio/master/src/Images/Trees.svg?sanitize=true) bottom left repeat-x");
+>>>>>>> homework5
     background-size: cover;
     width: 100%;
     height: 80%;
@@ -139,19 +143,29 @@
     line-height: 32px;
     margin-bottom: 24px;
 }
-button{
-    background-color: #ff8495;
-    padding: 15px 25px;
-    margin: 20px auto;
-    font-family: 'Overlock', Arial, Helvetica, sans-serif;
-    font-weight: normal;
-    color: #fafafa;
-    font-size: 18px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background 9999999s;
-    box-shadow: 1px 1px 10px
+
+@media only screen and (max-width: 649px) {
+    .container {
+        right: 50%;
+        top: 10%;
+        width: 80%;
+        transform: translate(50%, 0);
+        animation: text-fade-in 1000ms 800ms forwards;
+    }
+
+    @keyframes text-fade-in {
+        from {
+            right: 0;
+        }
+        to {
+            opacity: 1;
+            right: 50%;
+        }
+    }
+
+    .silhouette {
+        width: 100%;
+    }
 }
 
  button:focus {

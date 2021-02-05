@@ -6,14 +6,10 @@ import {useState} from 'react';
 import cn from 'classnames';
 
 
-const PokemonCard = ({ id, name, img, type, values }) => {
+const PokemonCard = ({ id, name, img, type, values,isActive,onCardClick }) => {
 
-    const [isActive,setActive]=useState(false);
-
-
-      const handleClick = (event) => {
-          event.preventDefault();
-            setActive(!isActive);
+      const handleClick = () => {
+          onCardClick&&onCardClick(id)
     }
 
     return (
