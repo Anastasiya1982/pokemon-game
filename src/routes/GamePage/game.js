@@ -1,8 +1,6 @@
-
 import React, {useState,useEffect} from 'react';
 import s from './style.module.css';
 import PokemonCard from "../../components/PokemonCard";
-
 import database from "../../services/firebase";
 
 
@@ -151,8 +149,7 @@ const GamePage=()=>{
         database.ref('pokemons').once('value',(snapshot)=>{
            setPokemons(snapshot.val());
         });
-
-    },[pokemons])
+    },[pokemons]);
 
    const  onHandleClick=(id)=>{
        console.log(id);
@@ -171,7 +168,6 @@ const GamePage=()=>{
            }, {});
        });
    };
-
         const onAddPokemon = () => {
             const newPokemon={
                 "abilities": [
@@ -204,7 +200,6 @@ const GamePage=()=>{
             console.log(newPostKey);
           database.ref('pokemons/'+newPostKey).set(newPokemon);
         }
-
 
         return (
             <div className={s.wrap}>
