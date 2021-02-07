@@ -41,8 +41,8 @@ const Menu=({status,onClick})=>{
                     {
                         MENU.map((item,index)=>{
                             return(
-                                <li key={item.index}>
-                                    <Link to={item.to} onClick={onClickClose}>
+                                <li key={index} >
+                                    <Link key={item.index} to={item.to} onClick={onClickClose}>
                                         {item.title}
                                     </Link>
                                 </li>)})
