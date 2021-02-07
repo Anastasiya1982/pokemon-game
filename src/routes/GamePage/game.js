@@ -147,82 +147,82 @@ const GamePage=()=>{
 
     useEffect(()=>{
         database.ref('pokemons').once('value',(snapshot)=>{
-           setPokemons(snapshot.val());
+            setPokemons(snapshot.val());
         });
     },[pokemons]);
 
-   const  onHandleClick=(id)=>{
-       console.log(id);
-       setPokemons(prevState => {
-           return Object.entries(prevState).reduce((acc, item) => {
-               const pokemon = {...item[1]};
-               if (pokemon.id === id) {
-                   database.ref('pokemons/'+ item[0]).set({
-                       ...pokemon,
-                       isActive:!pokemon.isActive})
-               };
-               acc[item[0]] = pokemon;
-               console.log(item[0]);
-               console.log(item[1])
-               return acc;
-           }, {});
-       });
-   };
-        const onAddPokemon = () => {
-            const newPokemon={
-                "abilities": [
-                    "blaze",
-                    "solar-power"
-                ],
-                "stats": {
-                    "hp": 39,
-                    "attack": 52,
-                    "defense": 43,
-                    "special-attack": 60,
-                    "special-defense": 50,
-                    "speed": 65
-                },
-                "type": "fire",
-                "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
-                "name": "charmander",
-                "base_experience": 62,
-                "height": 6,
-                "id": 4,
-                "values": {
-                    "top": 7,
-                    "right": 6,
-                    "bottom": 1,
-                    "left": 4
-                }
-            };
-            console.log("click on button add");
-           const  newPostKey = database.ref('pokemons').push().key;
-            console.log(newPostKey);
-          database.ref('pokemons/'+newPostKey).set(newPokemon);
-        }
-
-        return (
-            <div className={s.wrap}>
-                <div className={s.title}>
-                    <h3> GAME</h3>
-                    <span className={s.separator}></span>
-                    <button className={s.btnAddPokemon} onClick={onAddPokemon}>ADD Pokemon</button>
-                </div>
-                <div className={s.flex}>            {
-                    Object.entries(pokemons).map(([key, {name, img, id, type, values, isActive}]) => {
-                        return <PokemonCard key={key}
-                                            id={id}
-                                            name={name}
-                                            img={img}
-                                            type={type}
-                                            values={values}
-                                            isActive={isActive}
-                                            onCardClick={onHandleClick}
-                        />
-                    })
-                }
-                </div>
-            </div>
-        )
+    const  onHandleClick=(id)=>{
+        console.log(id);
+        setPokemons(prevState => {
+            return Object.entries(prevState).reduce((acc, item) => {
+                const pokemon = {...item[1]};
+                if (pokemon.id === id) {
+                    database.ref('pokemons/'+ item[0]).set({
+                        ...pokemon,
+                        isActive:!pokemon.isActive})
+                };
+                acc[item[0]] = pokemon;
+                console.log(item[0]);
+                console.log(item[1])
+                return acc;
+            }, {});
+        });
     };
+    const onAddPokemon = () => {
+        const newPokemon={
+            "abilities": [
+                "blaze",
+                "solar-power"
+            ],
+            "stats": {
+                "hp": 39,
+                "attack": 52,
+                "defense": 43,
+                "special-attack": 60,
+                "special-defense": 50,
+                "speed": 65
+            },
+            "type": "fire",
+            "img": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+            "name": "charmander",
+            "base_experience": 62,
+            "height": 6,
+            "id": 4,
+            "values": {
+                "top": 7,
+                "right": 6,
+                "bottom": 1,
+                "left": 4
+            }
+        };
+        console.log("click on button add");
+        const  newPostKey = database.ref('pokemons').push().key;
+        console.log(newPostKey);
+        database.ref('pokemons/'+newPostKey).set(newPokemon);
+    }
+
+    return (
+        <div className={s.wrap}>
+            <div className={s.title}>
+                <h3> GAME</h3>
+                <span className={s.separator}></span>
+                <button className={s.btnAddPokemon} onClick={onAddPokemon}>ADD Pokemon</button>
+            </div>
+            <div className={s.flex}>            {
+                Object.entries(pokemons).map(([key, {name, img, id, type, values, isActive}]) => {
+                    return <PokemonCard key={key}
+                                        id={id}
+                                        name={name}
+                                        img={img}
+                                        type={type}
+                                        values={values}
+                                        isActive={isActive}
+                                        onCardClick={onHandleClick}
+                    />
+                })
+            }
+            </div>
+        </div>
+    )
+};
 export default GamePage;
