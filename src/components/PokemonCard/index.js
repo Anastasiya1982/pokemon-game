@@ -2,11 +2,11 @@
 import React from 'react';
 import s from './style.module.css';
 import backCardImg from '../../assets/cardBackSide.jpg';
-import {useState} from 'react';
+
 import cn from 'classnames';
 
 
-const PokemonCard = ({ id, name, img, type, values,isActive,onCardClick }) => {
+const PokemonCard = ({ id,key, name, img, type, values,isActive,onCardClick }) => {
 
       const handleClick = () => {
           onCardClick&&onCardClick(id)

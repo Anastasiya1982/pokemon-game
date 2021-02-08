@@ -1,18 +1,12 @@
-import React, {useState} from 'react';
-
-
+import React from 'react';
 import HomePage from "./routes/HomePage/home";
 import GamePage from "./routes/GamePage/game";
 import AboutPage from "./routes/AboutPage/about";
 import {useRouteMatch, Switch, Route, Redirect} from "react-router-dom";
-
 import MenuHeader from "./components/MenuHeader/MenuHeader";
 import Footer from "./components/Footer/footer";
 import s from './style.module.css';
 import ContactPage from "./routes/ContactPage/contact";
-
-
-
 
 
 const App = () => {
@@ -30,7 +24,7 @@ const App = () => {
                 <>
                     <MenuHeader bgActive={!match.isExact}/>
                     <div className={s.wrap}>
-                        <Switch>
+                        <Switch >
                             <Route path="/" exact component={HomePage}/>
                             <Route path="/home" component={HomePage}/>
                             <Route path="/game" component={GamePage}/>
