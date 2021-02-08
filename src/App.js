@@ -7,15 +7,15 @@ import MenuHeader from "./components/MenuHeader/MenuHeader";
 import Footer from "./components/Footer/footer";
 import s from './style.module.css';
 import ContactPage from "./routes/ContactPage/contact";
-
+import {FireBaseContext} from './context/firebaseContext';
+import Firebase from "./services/firebase";
 
 const App = () => {
-
     const match=useRouteMatch('/');
-    console.log(match);
 
 
     return (
+        <FireBaseContext.Provider value={new Firebase()}>
         <Switch>
             <Route path="/404" render={() => (
                 <h1>404 Not Found</h1>
@@ -42,6 +42,7 @@ const App = () => {
                 <h1>404 Not Found</h1>
             )}/>
         </Switch>
+        </FireBaseContext.Provider>
 
     )
 };
