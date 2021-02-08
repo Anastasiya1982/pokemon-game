@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import s from './style.module.css';
 import PokemonCard from "../../components/PokemonCard";
 import database from "../../services/firebase";
+import {onLog} from "firebase";
 
 
 
@@ -161,7 +162,7 @@ const GamePage=()=>{
                         ...pokemon,
                         isActive:!pokemon.isActive})
                 };
-                acc[item[0]] = pokemon;
+                acc[item[0]] = {...pokemon};
                 console.log(item[0]);
                 console.log(item[1])
                 return acc;
@@ -198,7 +199,9 @@ const GamePage=()=>{
         console.log("click on button add");
         const  newPostKey = database.ref('pokemons').push().key;
         console.log(newPostKey);
-        database.ref('pokemons/'+newPostKey).set(newPokemon);
+        database.ref('pokemons/'+newPostKey).set(newPokemon).then((res)=>(setPokemons(prevState => ({
+            ...prevState, newPokemon
+        })))).catch(err=>console.log("Error... Pokemon is not result"));
     }
 
     return (
