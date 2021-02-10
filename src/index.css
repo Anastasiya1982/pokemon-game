@@ -34,3 +34,14 @@ a:hover,
 a:active {
   color: #f300b4;
 }
+button{
+  width: 210px;
+  height: 65px;
+  color: #F5F5F5;
+  background-color: #f300b4;
+  border-radius: 3px;
+  font-size: 18px;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-bottom: 30px;
+}

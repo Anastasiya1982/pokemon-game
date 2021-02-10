@@ -176,6 +176,11 @@ button:active {
     transition: background 0s;
     box-shadow: inset 1px 1px 10px -1px
 }
-
+.btn{
+    background: #f300b4;
+    border: 1px solid transparent;
+    color: #fafafa;
+    font-weight: 700;
+}
 
 

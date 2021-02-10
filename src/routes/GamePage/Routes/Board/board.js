@@ -4,22 +4,21 @@ import PokemonCard from "../../../../components/PokemonCard";
 import {PokemonContext} from "../../../../context/pokemonContexr";
 
 const BoardPage = () => {
-    const selectContext=useContext(PokemonContext);
-    console.log("PocemonContext:",selectContext)
+    const { pokemon }=useContext(PokemonContext);
+
     return (
         <div className={s.root}>
-            <div className={s.gameField}>
+
 						<div className={s.playerOne}>
-                            {selectContext.cards.map(
-                                ([key, {name, img, id, type, values}])=>(
+                            {Object.values(pokemon).map(({name, img, id, type, values})=>(
                                     <PokemonCard
-                                        key={key}
+                                        key={id}
                                         name={name}
                                         img={img}
                                         id={id}
                                         type={type}
                                         values={values}
-                                        isActive={true}
+                                        isActive
                                         className={s.card}
                                         isSelected
                                         minimize
@@ -27,7 +26,6 @@ const BoardPage = () => {
                                 )
                             )}
                         </div>
-						</div>
             <div className={s.board}>
                 <div className={s.boardPlate}>1</div>
                 <div className={s.boardPlate}>2</div>

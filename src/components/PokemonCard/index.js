@@ -6,18 +6,17 @@ import backCardImg from '../../assets/cardBackSide.jpg';
 import cn from 'classnames';
 
 
-const PokemonCard = ({ id, name, img, type, values,isActive=true, onCardClick,minimize, className, isSelected }) => {
+const PokemonCard = ({ id, name, img, type, values,isActive, onCardClick,minimize, className,isSelected }) => {
 
       const handleClickSelected = () => {
           onCardClick&&onCardClick(id)
     }
 
     return (
-        <div className={s.root} onClick={handleClickSelected}>
             <div className={cn(className,s.pokemonCard,{
                 [s.active]:isActive===true,
-                [s.selected]:isSelected===true
-            })}>
+                [s.selected]:isSelected,
+            })}  onClick={handleClickSelected}>
                 <div className={s.cardFront}>
                     <div className={cn(s.wrap,s.front)}>
                         <div className={cn(s.pokemon,s[type])}>
@@ -48,7 +47,7 @@ const PokemonCard = ({ id, name, img, type, values,isActive=true, onCardClick,mi
                 </div>
 
             </div>
-        </div>
+
 
     )
 };

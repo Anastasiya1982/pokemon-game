@@ -2,7 +2,7 @@ import React from 'react';
 import HomePage from "./routes/HomePage/home";
 import GamePage from "./routes/GamePage/index";
 import AboutPage from "./routes/AboutPage/about";
-import {useRouteMatch, Switch, Route, Redirect} from "react-router-dom";
+import {useLocation,useRouteMatch, Switch, Route, Redirect} from "react-router-dom";
 import MenuHeader from "./components/MenuHeader/MenuHeader";
 import Footer from "./components/Footer/footer";
 import s from './style.module.css';
@@ -13,7 +13,8 @@ import Firebase from "./services/firebase";
 
 
 const App = () => {
-    const match=useRouteMatch('/');
+    const location=useLocation();
+    const isPadding=location.pathname==="/" || location.pathname==="/game/board";
 
 
     return (
@@ -24,7 +25,7 @@ const App = () => {
             )}/>
             <Route>
                 <>
-                    <MenuHeader bgActive={!match.isExact}/>
+                    <MenuHeader bgActive={!isPadding}/>
                     <div className={s.wrap}>
                         <Switch >
                             <Route path="/"  exact component={HomePage}/>
