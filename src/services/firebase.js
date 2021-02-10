@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import firebase from "firebase";
 import "firebase/database";
 
 const fireBaseConfig = {
@@ -11,18 +11,17 @@ const fireBaseConfig = {
     appId: "1:510205323382:web:8e2299802d4b41f4145757"
 };
 
-
+!firebase.apps.length && firebase.initializeApp(fireBaseConfig);
 
 class Firebase {
     constructor() {
-        firebase.initializeApp(fireBaseConfig);
         this.fire=firebase;
-        this. database=firebase.database();
+        this.database=firebase.database();
     }
 
-    getPokemonsSocket=(cb)=>{
+    getPokemonsSoket=(cb)=>{
         this.database.ref('pokemons').on('value',(snapshot)=>{
-            cb(snapshot.val())
+            cb(snapshot.val());
         })
     }
     getPokemonsOnce=async ()=>{

@@ -1,13 +1,19 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useState, useEffect, useContext,} from 'react';
 import s from './style.module.css';
-import PokemonCard from "../../components/PokemonCard";
-import database from "../../services/firebase";
-import {FireBaseContext} from "../../context/firebaseContext";
+import {useHistory} from 'react-router-dom';
+import PokemonCard from '../../../../components/PokemonCard/index';
+import {FireBaseContext} from "../../../../context/firebaseContext";
+import {PokemonContext} from "../../../../context/pokemonContexr";
 
 
-const GamePage=()=>{
-    const firebase=useContext(FireBaseContext)
+const StartPage=()=>{
+    const firebase=useContext(FireBaseContext);
     const [pokemons,setPokemons]=useState({});
+    const selectedContext=useContext(PokemonContext);
+    const history=useHistory();
+
+
+
     const DATA= {
         "abilities": [
             "blaze",
@@ -42,39 +48,50 @@ const GamePage=()=>{
 
 
     useEffect(()=>{
-      firebase.getPokemonsSocket((pokemons)=>{
+      firebase.getPokemonsSoket((pokemons)=>{
           setPokemons(pokemons)
       });
     },[]);
 
-    const  handleChangeActiveClick=(id)=>{
+    const  onCardClick=(id)=>{
         setPokemons(prevState => {
             return Object.entries(prevState).reduce((acc, item) => {
                 const pokemon = {...item[1]};
-                if (pokemon.id === id) {
-                        pokemon.isActive=!pokemon.isActive
+                if (pokemon.id === id ) {
+                        pokemon.isSelected=!pokemon.isSelected;
+                        pushToContext(item);
                 };
                 acc[item[0]] =pokemon;
-                firebase.postPokemon(item[0],pokemon);
+
+
                 return acc;
             }, {});
         });
+
     };
 
-
+const pushToContext=(val)=>{
+    console.log(val)
+    selectedContext.cards.push(val);
+    console.log(selectedContext);
+}
 
     const onAddPokemon = () => {
-        const data=DATA;
-        firebase.addPokemon(data)
-        }
+        const data = DATA;
+        firebase.addPokemon(data);
+    }
 
+    const onStartNewGame=()=>{
+      history.push('/game/board');
 
+   }
     return (
         <div className={s.wrap}>
             <div className={s.title}>
                 <h3> GAME</h3>
                 <span className={s.separator}></span>
-                <button className={s.btnAddPokemon} onClick={onAddPokemon}>ADD Pokemon</button>
+                <button className={s.btnAddPokemon} onClick={onAddPokemon}>Add Pokemon</button>
+                <button className={s.btnStartGame} onClick={onStartNewGame}>Start Game </button>
             </div>
             <div className={s.flex}>            {
                 Object.entries(pokemons).map(([key, {name, img, id, type, values, isActive}]) => {
@@ -85,7 +102,10 @@ const GamePage=()=>{
                                         type={type}
                                         values={values}
                                         isActive={isActive}
-                                        onCardClick={handleChangeActiveClick}
+                                        onCardClick={onCardClick}
+                                        isSelected
+                                        minimize
+                                        className
                     />
                 })
             }
@@ -93,4 +113,4 @@ const GamePage=()=>{
         </div>
     )
 };
-export default GamePage;
+export default StartPage;
