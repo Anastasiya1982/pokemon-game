@@ -6,6 +6,7 @@ import {PokemonContext} from "../../../../context/pokemonContexr";
 
 const BoardPage = () => {
     const [board,setBoard]=useState([]);
+    const [player2,setPlayer2]=useState([]);
     const { pokemon }=useContext(PokemonContext);
     const history=useHistory();
 
@@ -16,10 +17,14 @@ const BoardPage = () => {
         const boardResponse = await fetch( "https://reactmarathon-api.netlify.app/api/board ");
         const request = await boardResponse.json();
             setBoard(request.data);
+            const playerTwoResponse=await fetch("https://reactmarathon-api.netlify.app/api/create-player");
+            const playerTwoRequest=await playerTwoResponse.json();
+            setPlayer2(playerTwoRequest.data);
 
     },[]);
 
     console.log(board)
+    console.log(player2)
 //   if(Object.keys(pokemon).length === 0){
 //     history.replace('/game');
 // }
@@ -62,6 +67,22 @@ const BoardPage = () => {
                 }
 
 
+            </div>
+            <div className={s.playerTwo}>
+                {player2.map(({name, img, id, type, values})=>(
+                    <PokemonCard
+                        key={id}
+                        name={name}
+                        img={img}
+                        id={id}
+                        type={type}
+                        values={values}
+                        isActive
+                        className={s.card}
+                        isSelected
+                        minimize
+                    />
+                ))}
             </div>
         </div>
     );
