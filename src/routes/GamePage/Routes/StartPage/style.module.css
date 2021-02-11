@@ -2,12 +2,11 @@
     padding: 0;
     font-size: 1.4rem;
     position: relative;
-     background:url("../../assets/bg3.jpg") no-repeat center center fixed;
+     background:url("../../../../assets/bg3.jpg") no-repeat center center fixed;
      -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
 
 }
 
@@ -35,12 +34,18 @@
 
 
 .flex{
-   display: grid;
-    grid-template-columns: auto auto auto;
+    display: grid;
+   grid-template-columns: auto auto auto;
     grid-gap: 40px;
 
 }
+.buttonWrap{
+    text-align: center;
+    padding: 2rem;
+
+}
 .card{
-    width: 200px;
+    width: 100%;
     height: 350px;
+    cursor: pointer;
 }

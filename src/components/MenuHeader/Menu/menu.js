@@ -24,12 +24,9 @@ const MENU=[
 
 
 const Menu=({status,onClick})=>{
-
     const onClickClose=()=>{
         onClick&&onClick()
     }
-
-
     return (
         <div className={cn(s.menuContainer,
             {   [s.active]: status === true,
