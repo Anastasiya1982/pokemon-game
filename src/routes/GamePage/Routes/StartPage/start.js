@@ -20,6 +20,7 @@ const StartPage=()=>{
 
 
     useEffect(()=>{
+        // получаем карточки покемотов из базы
       firebase.getPokemonsSoket((pokemons)=>{
           setPokemons(pokemons)
       });

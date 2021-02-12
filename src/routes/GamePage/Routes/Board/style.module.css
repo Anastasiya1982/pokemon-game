@@ -35,26 +35,18 @@
     background: none;
 }
 
-.card {
-    height: 14.8vw;
-    margin-bottom: -110px;
-}
 
 
-.card:first-child {
-    margin-top: 0;
-    margin-bottom: -70px;
-}
 .playerOne {
     position: absolute;
-    top: 4.3vw;
+    top: 8.5vw;
     left: 5vw;
     width: 18vw;
     height: 50.3vw;
 }
 .playerTwo{
     position: absolute;
-    top: 4.3vw;
+    top: 8.5vw;
     right: 4vw;
     width: 18vw;
     height: 50.3vw;
