@@ -72,6 +72,7 @@ const StartPage=()=>{
                                                 handleChangeSelected(key)
                                             }
                                         }}
+
                                         isSelected={selected}
                                         minimize
                                         className={s.card}

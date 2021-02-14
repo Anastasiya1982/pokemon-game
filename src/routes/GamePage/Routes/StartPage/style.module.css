@@ -35,17 +35,18 @@
 
 .flex{
     display: grid;
-   grid-template-columns: auto auto auto;
+   grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-gap: 40px;
-
 }
+
 .buttonWrap{
     text-align: center;
     padding: 2rem;
 
 }
 .card{
-    min-width: 200px;
+    min-width:250px;
     min-height: 350px;
     cursor: pointer;
 }

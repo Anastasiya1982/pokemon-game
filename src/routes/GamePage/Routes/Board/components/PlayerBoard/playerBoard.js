@@ -30,6 +30,7 @@ const PlayerBoard=({ cards,onClickCard,player})=>{
                     values={card.values}
                     isActive
                     minimize
+                    className={s.card}
 
                 />
                 </div>))

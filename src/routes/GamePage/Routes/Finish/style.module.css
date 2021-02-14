@@ -1,21 +1,25 @@
 
+
 h1{
     padding-top: 200px;
     color: #f300b4;
 }
 
-.playerPlate{
+.playerPlate {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
 }
+buttonContainer{
+    text-align: center;
+}
+
 .buttonWrap{
     text-align: center;
     padding: 2rem;
+    margin: 0 auto;
 
 }
 .card{
-    min-width: 200px;
+    min-width: 250px;
     min-height: 350px;
     cursor: pointer;
 }

@@ -8,6 +8,7 @@ import PlayerBoard from "./components/PlayerBoard/playerBoard";
 
 
 
+
 // создаем функцию для подсчета ходов, количества перевернутых карт для каждого игрока
 
 const counterWin=(board,player1,player2)=>{
@@ -24,8 +25,7 @@ const counterWin=(board,player1,player2)=>{
             player1Count++;
         }
     });
-    console.log(player1Count);
-    console.log(player2Count);
+
    return [player1Count,player2Count];
 }
 
@@ -35,6 +35,11 @@ const BoardPage = () => {
     const [board,setBoard]=useState([]);
     const [player2,setPlayer2]=useState([]);
     const [choiseCard,setChoiseCard]=useState(null);
+
+
+    const  player2PokemonsContext  = useContext(PokemonContext);
+    console.log("Pkemon2context",player2PokemonsContext);
+
     // устанавливаем для карточек игрока красный фон
     const [player1, setPlayer1] = useState(() => {
         return Object.values(pokemon).map(item => ({
@@ -48,32 +53,34 @@ const BoardPage = () => {
 
 
 
-
     useEffect(async ()=>{
         //получаем игровое поле
         const boardResponse = await fetch( "https://reactmarathon-api.netlify.app/api/board ");
         const request = await boardResponse.json();
             setBoard(request.data);
             //получаем карточки противника
-            const playerTwoResponse=await fetch("https://reactmarathon-api.netlify.app/api/create-player");
-            const playerTwoRequest=await playerTwoResponse.json();
+            const player2Response=await fetch("https://reactmarathon-api.netlify.app/api/create-player");
+            const player2Request=await player2Response.json();
+
             // добавляем карточкам противника синий фон
             setPlayer2(()=>{
-                return (playerTwoRequest.data).map(item=>({
+                return (player2Request.data).map(item=>({
                     ...item,
                     possession:'red'
-
                 }))});
+        console.log("карточки второго игрока;",player2Request.data);
+        player2PokemonsContext.player2Pokemons=player2Request.data;
+
 
     },[]);
+
+
 
   if(Object.keys(pokemon).length === 0){
     history.replace('/game');
 }
 
     const onHandlerPlateClick=async (position)=>{
-        console.log(position);
-        console.log(choiseCard);
         if(choiseCard){
             const params={
                 position,
@@ -135,8 +142,12 @@ const BoardPage = () => {
 
     }
 
+    const handlerChoosePlayer2Pokemons=()=>{
+        console.log("function of choosing pokemons of player2");
+    }
 
     return (
+
         <div className={s.root}>
 						<div className={s.playerOne}>
                             <PlayerBoard cards={player1}
@@ -167,6 +178,7 @@ const BoardPage = () => {
                />
             </div>
         </div>
+
     );
 };
 

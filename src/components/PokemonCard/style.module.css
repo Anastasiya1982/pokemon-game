@@ -237,12 +237,8 @@
     bottom: 0;
 }
 
- .card{
-   min-width: 200px;
-    min-height: 350px;
-    cursor: pointer;
-}
- .red{
+
+.red{
      background-color: #d998b2;
  }
  .blue{
